@@ -6,7 +6,7 @@ setup(
     version="0.1.0",
     description="Convert Spotify URLs to tracks info in CSV format",
     license="MIT",
-    keywords="convert spotify track csv",
+    keywords="convert spotify csv",
     python_requires=">=3",
     install_requires=[
         "beautifulsoup4",
