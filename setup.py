@@ -7,7 +7,7 @@ with open("README.rst") as f:
 
 setup(
     name="spotify2csv",
-    version="0.2.0",
+    version="0.3.0",
     python_requires=">=3",
     author="Arthur White",
     author_email="arthur@white.li",
@@ -17,12 +17,12 @@ setup(
     keywords="convert spotify csv",
     url="https://github.com/arthurwhite/spotify2csv",
     classifiers=[
-        "Development Status :: 5 - Production/Stable"
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Intended Audience :: End Users/Desktop",
-        "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
+        "Topic :: Software Development :: Build Tools",
         "Topic :: Utilities",
     ],
     install_requires=[
