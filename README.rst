@@ -13,7 +13,7 @@ Install
 Usage
 -----
 
-.. code:: python
+.. code:: console
 
     spotify2csv input output
 
