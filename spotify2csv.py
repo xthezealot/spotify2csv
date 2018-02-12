@@ -15,21 +15,27 @@ class Tracks(MutableSet):
     """A set of unique tracks."""
 
     def __init__(self, *args):
+        """Initialize a tracks set."""
         self.items = set(args)
 
     def __contains__(self, item):
+        """Check that the set contains a track."""
         return self.items.__contains__(item)
 
     def __iter__(self):
+        """Tracks iterator."""
         return self.items.__iter__()
 
     def __len__(self):
+        """Get the number of tracks."""
         return self.items.__len__()
 
     def add(self, item):
+        """Add a track."""
         return self.items.add(item)
 
     def discard(self, item):
+        """Remove a track."""
         return self.items.discard(item)
 
     def clean(self):
@@ -43,12 +49,11 @@ class Track(object):
     fieldnames = ['artist', 'title', 'album', 'cover', 'url']
 
     def __init__(self, url, artist='', title='', album='', cover=''):
-        """Initiates a Spotify track with URL.
+        """Initialize a Spotify track with URL.
 
         :param url: a Spotify track URL
         :param cover: a Spotify cover image URL
         """
-
         self.url = url
         self._validate_url()
 
@@ -58,9 +63,11 @@ class Track(object):
         self.cover = cover
 
     def __eq__(self, other):
+        """Compare 2 tracks."""
         return self.url == other
 
     def __hash__(self):
+        """Get the unique track hash (its URL)."""
         return hash(self.url)
 
     def _validate_url(self):
@@ -70,7 +77,6 @@ class Track(object):
 
     def fetch_info(self, session=None):
         """Scrap and update track info from Spotify's website."""
-
         if not session:
             session = requests.Session()
         res = session.get(self.url)
@@ -94,7 +100,6 @@ class Track(object):
 
 def main():
     """Convert Spotify URLs to tracks info in CSV format."""
-
     parser = argparse.ArgumentParser(
         description='Convert Spotify URLs to tracks info in CSV format.')
     parser.add_argument('urls_file',
@@ -131,8 +136,8 @@ def main():
                 errors.append(e)
     if errors:
         print('Error — These URLs cannot be used:')
-        for e in errors:
-            print('\t', e)
+        for err in errors:
+            print('\t', err)
 
     # Fetch tracks info
     session = requests.Session()
@@ -152,8 +157,8 @@ def main():
     progress.finish()
     if errors:
         print('\nError — No info was found for these URLs:')
-        for e in errors:
-            print('\t', e['url'], '\n\t\t', e['error'], sep='')
+        for err in errors:
+            print('\t', err['url'], '\n\t\t', err['error'], sep='')
 
     # Clean and save tracks
     if tracks:
