@@ -26,4 +26,4 @@ Usage
     optional arguments:
       -h, --help    show this help message and exit
       -u, --update  also update info from tracks file (if it already exists and
-                    contains tracks
+                    contains tracks)

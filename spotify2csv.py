@@ -103,7 +103,7 @@ def main():
                         help='the filename for saving the tracks info as CSV')
     parser.add_argument('-u', '--update', action='store_true',
                         help='also update info from tracks file (if it '
-                             'already exists and contains tracks')
+                             'already exists and contains tracks)')
     args = parser.parse_args()
 
     tracks = Tracks()
