@@ -40,7 +40,7 @@ class Tracks(MutableSet):
 
     def clean(self):
         """Remove tracks that have no minimal info."""
-        self.items = [item for item in self.items if item.complete()]
+        self.items = [item for item in self.items if item.complete]
 
 
 class Track(object):
@@ -93,9 +93,10 @@ class Track(object):
         self.album = body.select_one('.featured-on .media-bd a').get_text()
         self.cover = body.select_one('[property="og:image"]')['content']
 
+    @property
     def complete(self):
         """Tells if track has minimal info (artist and title)."""
-        return self.artist and self.title
+        return bool(self.artist and self.title)
 
 
 def main():
@@ -146,7 +147,7 @@ def main():
 
     for track in tracks:
         progress.next()
-        if not args.update and track.complete():
+        if not args.update and track.complete:
             continue
         try:
             track.fetch_info(session=session)
